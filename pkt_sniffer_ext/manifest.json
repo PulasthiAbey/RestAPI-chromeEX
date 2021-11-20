@@ -1,0 +1,23 @@
+{
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"], 
+			"js": ["content.js"]
+		}
+	],
+	"background": {
+		"persistent": true,
+		"scripts": ["background.js"]
+	},
+	"manifest_version": 2,
+	"name": "Test Sniffer",
+	"permissions": [
+		"tabs",
+		"*://*/*",
+		"webRequest",
+		"storage"
+	],
+	"version": "1.0.9",
+	"action": {}
+}
+
