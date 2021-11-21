@@ -11,6 +11,8 @@
         console.log(response.json());
       })
       .catch((error) => console.log(error));
+
+    console.log("The data sent to " + response);
   }
 
   function capture(req_details) {
@@ -23,6 +25,7 @@
         time: new Date(req_details.timeStamp).toLocaleString(),
       };
       console.log(data);
+      saveUser(data).then((data) => console.log(data));
     } catch (e) {}
   }
 
