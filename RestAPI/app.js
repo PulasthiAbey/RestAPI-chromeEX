@@ -1,3 +1,4 @@
+const Joi = require("joi");
 const express = require("express");
 const app = require("express")();
 const mysql = require("mysql");
@@ -47,15 +48,23 @@ app.get("/:user_email", async (req, res) => {
 
 // add details to the database
 app.get("/adddetails", (req, res) => {
-  let userDetails = {
-    initiator: req.body.initiator,
-    ip: req.body.ip,
-    method: req.body.method,
-    url: req.body.url,
-    time: req.body.time,
+  const schema = {
+    email: Joi.string().required(),
+    initial: Joi.string(),
+    ip: Joi.string(),
+    method: Joi.string(),
+    url: Joi.string(),
+    timestamp: Joi.string(),
   };
+
+  const results = Joi.validate(req.body, schema);
+  if (results.error) {
+    res.status(400).send(results.error);
+    return;
+  }
+
   let sql = "INSERT INTO pkt_data SET ?";
-  let query = db.query(sql, userDetails, (err, result) => {
+  let query = db.query(sql, req.body, (err, result) => {
     if (err) {
       throw err;
     }
