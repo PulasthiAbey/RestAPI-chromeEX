@@ -7,8 +7,10 @@
   async function saveUser(data) {
     let response = await fetch(url, { method: "POST", body: data })
       .then((response) => response.json())
-      .then()
-      .catch();
+      .then((response) => {
+        console.log(response.json());
+      })
+      .catch((error) => console.log(error));
   }
 
   function capture(req_details) {
