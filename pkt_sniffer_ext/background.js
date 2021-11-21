@@ -14,6 +14,7 @@
                 time: new Date(req_details.timeStamp).toLocaleString()
             }
             console.log(data)
+            fetch;
         } catch (e) { }
     }
 
