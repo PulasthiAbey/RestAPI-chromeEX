@@ -38,7 +38,7 @@ app.get("/:user_email", async (req, res) => {
   const query = `SELECT * from pkt_data WHERE user_email = ${req.params.user_email}`;
   db.query(query, [req.params.user_email], (error, results) => {
     if (!results[0]) {
-      res.json({ status: "Not Found!" });
+      res.json({ status: "User Not Found!", response: res });
     } else {
       res.json(results[0]);
     }
