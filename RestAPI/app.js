@@ -48,11 +48,11 @@ app.get("/:user_email", async (req, res) => {
 // add details to the database
 app.get("/adddetails", (req, res) => {
   let userDetails = {
-    initiator: req.params.initiator,
-    ip: req.params.ip,
-    method: req.params.method,
-    url: req.params.url,
-    time: req.params.time,
+    initiator: req.body.initiator,
+    ip: req.body.ip,
+    method: req.body.method,
+    url: req.body.url,
+    time: req.body.time,
   };
   let sql = "INSERT INTO pkt_data SET ?";
   let query = db.query(sql, userDetails, (err, result) => {
