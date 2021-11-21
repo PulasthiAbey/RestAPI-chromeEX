@@ -60,7 +60,7 @@ app.get("/adddetails", (req, res) => {
       throw err;
     }
     console.log(result);
-    res.send("Details added");
+    res.send("Details added: " + query);
   });
 });
 
