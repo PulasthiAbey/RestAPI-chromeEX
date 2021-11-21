@@ -47,7 +47,7 @@ app.get("/:user_email", async (req, res) => {
 });
 
 // add details to the database
-app.get("/adddetails", (req, res) => {
+app.post("/adddetails", (req, res) => {
   const schema = {
     email: Joi.string().required(),
     initial: Joi.string(),
