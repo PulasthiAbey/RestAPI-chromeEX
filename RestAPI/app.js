@@ -2,7 +2,7 @@ const Joi = require("joi");
 const express = require("express");
 const app = require("express")();
 const mysql = require("mysql");
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 5000;
 
 // database connections
 const db = mysql.createConnection({
